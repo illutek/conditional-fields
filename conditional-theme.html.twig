@@ -1,0 +1,45 @@
+{#
+    Created by PhpStorm.
+    User: Stefan
+    Date: 12/01/2016
+    Time: 12:35
+    Deze file wordt page.html.twig of page--front.html.twig
+    contentlayout, sidebarfirst en sidebarsecond variabele van .theme file
+
+#}
+
+<main role="main" class="row">
+    <div class="col-md-12">
+        <a id="main-content" tabindex="-1"></a>
+    </div>
+    <div class="layout-content {{ contentlayout }}"> {# de variabele van .theme file #}
+        {{ page.highlighted }}
+
+        {{ title_prefix }}
+        {% if title %}
+            <h1>{{ title }}</h1>
+        {% endif %}
+        {{ title_suffix }}
+
+        {{ tabs }}
+
+        {% if action_links %}
+            <nav class="action-links">{{ action_links }}</nav>
+        {% endif %}
+
+        {{ page.content }}
+    </div>{# /.layout-content #}
+
+    {% if page.sidebar_first %}
+        <aside class="layout-sidebar-first test1 {{ sidebarfirst }}">{# de variabele van .theme file #}
+            {{ page.sidebar_first }}
+        </aside>
+    {% endif %}
+
+    {% if page.sidebar_second %}
+        <aside class="layout-sidebar-second {{ sidebarsecond }}">{# de variabele van .theme file #}
+            {{ page.sidebar_second }}
+        </aside>
+    {% endif %}
+
+</main>

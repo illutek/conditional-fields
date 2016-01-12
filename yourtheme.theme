@@ -1,0 +1,33 @@
+<?php
+/**
+ * Ziet hier dezelfde code als op template.php hier is dan ook niets veranderd
+ * tov Drupal7
+ * Verandering zit op de page.html.twig uiteraard
+ */
+?>
+<?php
+/**
+ * @param $variables
+ */
+function yourtheme_preprocess_page(&$variables) {
+// als er in beide sidebars content is
+if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+$variables['contentlayout'] = 'col-md-5 col-md-push-4';
+$variables['sidebarfirst'] = 'col-md-4 col-md-pull-5';
+$variables['sidebarsecond'] = 'col-md-3';
+}
+// als er enkel in de sidebar first content is
+elseif (!empty($variables['page']['sidebar_first'])) {
+$variables['contentlayout'] = 'col-md-8 col-md-push-4';
+$variables['sidebarfirst'] = 'col-md-4 col-md-pull-8';
+}
+// als er enkel content is in de rechter sidebar
+elseif (!empty($variables['page']['sidebar_second'])) {
+$variables['contentlayout'] = 'col-md-8';
+$variables['sidebarsecond'] = 'col-md-4';
+}
+// geen enkel content in beide zijbalken
+else {
+$variables['contentlayout'] = 'col-md-12';
+}
+}
